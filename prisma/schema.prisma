@@ -9,3 +9,38 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+enum prize_redeem_status {
+  pending
+  cancelled
+  succeeded
+}
+
+model users {
+  id            String          @id @default(uuid())
+  phone_no      Int
+  created_at    DateTime        @default(now())
+  updated_at    DateTime?       @updatedAt
+  prizes_record prizes_record[]
+}
+
+model prizes_pool {
+  id            String          @id @default(uuid())
+  name          String
+  total         Int
+  daily         Int
+  created_at    DateTime        @default(now())
+  updated_at    DateTime?       @updatedAt
+  prizes_record prizes_record[]
+}
+
+model prizes_record {
+  id         String              @id @default(uuid())
+  users      users               @relation(fields: [user_id], references: [id])
+  user_id    String
+  prizes     prizes_pool         @relation(fields: [prize_id], references: [id])
+  prize_id   String
+  status     prize_redeem_status @default(pending)
+  created_at DateTime            @default(now())
+  updated_at DateTime?           @updatedAt
+}
