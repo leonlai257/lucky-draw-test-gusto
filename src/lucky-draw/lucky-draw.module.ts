@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { LuckyDrawService } from './lucky-draw.service';
+import { PrismaService } from 'src/prisma.service';
 import { LuckyDrawController } from './lucky-draw.controller';
+import { LuckyDrawService } from './lucky-draw.service';
 
 @Module({
   controllers: [LuckyDrawController],
-  providers: [LuckyDrawService]
+  providers: [LuckyDrawService, PrismaService],
 })
 export class LuckyDrawModule {}
