@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Cron, SchedulerRegistry } from '@nestjs/schedule';
 import { PrismaClient } from '@prisma/client';
+import { CronJob } from 'cron';
 import { DrawPrizeDto, RedeemPrizeDto } from './dto/lucky-draw.dto';
 
 @Injectable()

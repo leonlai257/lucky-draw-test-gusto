@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { LuckyDrawService } from './lucky-draw.service';
 import { DrawPrizeDto, RedeemPrizeDto } from './dto/lucky-draw.dto';
 
@@ -15,4 +23,18 @@ export class LuckyDrawController {
   redeemPrize(@Body() redeemPrizeDto: RedeemPrizeDto) {
     return this.luckyDrawService.drawPrize(redeemPrizeDto);
   }
+
+  @Post('cronjob/auto-handle-recurrences')
+  startAutoCaptureCronJob(
+    @Body() { schedule_expression }: { schedule_expression: string },
+  ) {
+    return this.luckyDrawService.startAutoHandleRecurrencesCronJob(
+      schedule_expression,
+    );
+  }
+
+  // @Delete('cronjob/auto-handle-recurrences')
+  // stopAutoCaptureCronJob() {
+  //   return this.luckyDrawService.stopAutoHandleRecurrencesCronJob();
+  // }
 }
