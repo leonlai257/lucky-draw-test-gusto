@@ -16,19 +16,26 @@ enum prize_redeem_status {
   succeeded
 }
 
+enum lucky_draw_status {
+  available
+  unavailable
+}
+
 model users {
-  id            String          @id @default(uuid())
-  phone_no      Int
-  created_at    DateTime        @default(now())
-  updated_at    DateTime?       @updatedAt
+  id            String            @id @default(uuid())
+  phone_no      String            @unique
+  draw_status   lucky_draw_status @default(available)
+  created_at    DateTime          @default(now())
+  updated_at    DateTime?         @updatedAt
   prizes_record prizes_record[]
 }
 
 model prizes_pool {
   id            String          @id @default(uuid())
   name          String
-  total         Int
-  daily         Int
+  total_limit   Int?
+  daily_limit   Int?
+  stock         Int?
   created_at    DateTime        @default(now())
   updated_at    DateTime?       @updatedAt
   prizes_record prizes_record[]

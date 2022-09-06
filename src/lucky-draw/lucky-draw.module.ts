@@ -7,4 +7,4 @@ import { LuckyDrawService } from './lucky-draw.service';
   controllers: [LuckyDrawController],
   providers: [LuckyDrawService, PrismaService],
 })
-export class LuckyDrawModule {}
+export class LuckyDrawModule { }

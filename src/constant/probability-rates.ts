@@ -1,10 +1,10 @@
 export default {
   coupon: {
     cash: {
-      FIVE: 0.5,
-      TWO: 2,
+      FIVE: 5,
+      TWO: 20,
     },
-    BUY_ONE_GET_ONE: 80
+    BUY_ONE_GET_ONE: 800
   },
-  NO_PRIZE: 17.5
+  NO_PRIZE: 175
 };
