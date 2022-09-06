@@ -30,20 +30,37 @@ npx prisma studio
 $ npm run start:debug
 ```
 
-## Example request body
+## Example request body (Draw/Redeem)
 ```JSON
 {
     "phone_no": "22222222"
 }
 ```
 
-## Example response
+## Example success response (Draw)
 ```JSON
 {
     "status": "success",
     "result": {
         "status": "success",
         "message": "Congratulation! You got a Buy One Get One Free Coupon!"
+    }
+}
+```
+
+## Example success response (Redeem)
+```JSON
+{
+    "message": "success",
+    "result": {
+        "status": "REDEEM_SUCCESS",
+        "message": [
+            {
+                "prizes": {
+                    "name": "Buy One Get One Free Coupon"
+                }
+            }
+        ]
     }
 }
 ```
